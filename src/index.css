@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.login_form_group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width:100wv;
+  height:100vh;
+  padding-top:20vh;
+  padding-bottom:20vh;
+}
+
+.login_form_group label,.input{
+  padding-left:20vw;
+  padding-right:20vw;
+}
