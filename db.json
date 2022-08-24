@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "First-User",
+      "password": "password1"
+    },
+    {
+      "id": 1,
+      "name": "2nd User",
+      "password": "pass2"
+    },
+    {
+      "id": 2,
+      "name": "admin",
+      "password": "password_admin"
+    },
+    {
+      "id": 3,
+      "name": "Artem",
+      "password": "1234567"
+    }
+
+  ],
+  "posts": [
+    {
+      "id": 0,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
