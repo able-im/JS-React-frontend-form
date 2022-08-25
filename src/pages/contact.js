@@ -1,57 +1,118 @@
-import React from 'react'
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react'
+import { useState } from 'react'
 
-const TableExampleApprove = () => (
-  <Table compact celled definition>
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>Name</Table.HeaderCell>
-        <Table.HeaderCell>Birthday</Table.HeaderCell>
-        <Table.HeaderCell>E-mail address</Table.HeaderCell>
-        <Table.HeaderCell>Co-worker</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
 
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>John Lilki</Table.Cell>
-        <Table.Cell>September 14, 2013</Table.Cell>
-        <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
-        <Table.Cell>No</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Jamie Harington</Table.Cell>
-        <Table.Cell>January 11, 2014</Table.Cell>
-        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-        <Table.Cell>Yes</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Jill Lewis</Table.Cell>
-        <Table.Cell>May 11, 2014</Table.Cell>
-        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-        <Table.Cell>Yes</Table.Cell>
-      </Table.Row>
-    </Table.Body>
+const data = [
+  {
+    employeeId: '01',
+    name: 'John Doe',
+    email: 'johndoe@email.com',
+    position: 'Frontend Developer',
+    phone: '773123456',
+  },
+  {
+    employeeId: '02',
+    name: 'Sara',
+    email: 'sara@email.com',
+    position: 'HR Executive',
+    phone: '334123456',
+  },
+  {
+    employeeId: '03',
+    name: 'Mike',
+    email: 'mike@email.com',
+    position: 'Backend Developer',
+    phone: '554123456',
+  },
+  {
+    employeeId: '',
+    name: '',
+    email: '',
+    position: '',
+    phone: '',
+  },
+  {
+    employeeId: '',
+    name: '',
+    email: '',
+    position: '',
+    phone: '',
+  },
 
-    <Table.Footer fullWidth>
-      <Table.Row>
-        <Table.HeaderCell />
-        <Table.HeaderCell colSpan='4'>
-          <Button
-            floated='left'
-            icon
-            labelPosition='left'
-            primary
-            size='small'
-          >
-            <Icon name='user' /> Add
-          </Button>
-          <Button size='small'>Edit</Button>
-          <Button size='small'>Delete</Button>
-        </Table.HeaderCell>
-      </Table.Row>
-    </Table.Footer>
-  </Table>
-)
 
-export default TableExampleApprove
+]
+
+const EditableTable = () => {
+  const [employeeData, setEmployeeData] = useState(data)
+
+  const onChangeInput = (e, employeeId) => {
+    const { name, value } = e.target
+
+    const editData = employeeData.map((item) =>
+      item.employeeId === employeeId && name ? { ...item, [name]: value } : item
+    )
+
+    setEmployeeData(editData)
+  }
+
+  return (
+    <div className="container">
+      <h1 className="title">Contacts</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employeeData.map(({ employeeId, name, email, position, phone }) => (
+            <tr key={employeeId}>
+              <td>
+                <input
+                  name="name"
+                  value={name}
+                  type="text"
+                  onChange={(e) => onChangeInput(e, employeeId)}
+                  placeholder="Type Name"
+                />
+              </td>
+              <td>
+                <input
+                  name="email"
+                  value={email}
+                  type="text"
+                  onChange={(e) => onChangeInput(e, employeeId)}
+                  placeholder="Type Email"
+                />
+              </td>
+              <td>
+                <input
+                  name="position"
+                  type="text"
+                  value={position}
+                  onChange={(e) => onChangeInput(e, employeeId)}
+                  placeholder="Type Position"
+                />
+              </td>
+              <td>
+                <input
+                  name="phone"
+                  type="text"
+                  value={phone}
+                  onChange={(e) => onChangeInput(e, employeeId)}
+                  placeholder="Type Phone"
+                />
+              </td>
+
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+    </div>
+  )
+}
+
+export default EditableTable
