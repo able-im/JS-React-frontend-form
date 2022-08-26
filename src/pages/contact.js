@@ -50,7 +50,6 @@ const EditableTable = () => {
 		}
 		employeeData.push(newContact)
 		setEmployeeData([...employeeData])
-		console.log(employeeData)
 	}
 
 	return (
