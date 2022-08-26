@@ -1,45 +1,53 @@
 import { useState } from 'react'
-
+import { renderIntoDocument } from 'react-dom/test-utils';
 
 const data = [
   {
-    employeeId: '01',
+    employeeId: 1,
     name: 'John Doe',
     email: 'johndoe@email.com',
     position: 'Frontend Developer',
     phone: '773123456',
   },
   {
-    employeeId: '02',
+    employeeId: 2,
     name: 'Sara',
     email: 'sara@email.com',
     position: 'HR Executive',
     phone: '334123456',
   },
   {
-    employeeId: '03',
+    employeeId: 3,
     name: 'Mike',
     email: 'mike@email.com',
     position: 'Backend Developer',
     phone: '554123456',
   },
   {
-    employeeId: '',
+    employeeId: 4,
     name: '',
     email: '',
     position: '',
     phone: '',
   },
-  {
-    employeeId: '',
-    name: '',
-    email: '',
-    position: '',
-    phone: '',
-  },
-
-
 ]
+
+function AddContact(e) {
+
+  const newContact =
+  {
+    employeeId: data.length + 1,
+    name: '',
+    email: '',
+    position: '',
+    phone: '',
+  }
+
+  data.push(newContact);
+  console.log(data);
+  // here i have to re-render table
+}
+
 
 const EditableTable = () => {
   const [employeeData, setEmployeeData] = useState(data)
@@ -110,8 +118,12 @@ const EditableTable = () => {
           ))}
         </tbody>
       </table>
-
-    </div>
+      <div>
+        <button onClick={(e) => AddContact(e)}>
+          Add
+        </button>
+      </div>
+    </div >
   )
 }
 
