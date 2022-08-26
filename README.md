@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+To load JSon Server on 8000 port we have to use:
+
+### `npx json-server --port 8000 db.json`
+
 In the project directory, you can run:
 
 ### `npm start`
