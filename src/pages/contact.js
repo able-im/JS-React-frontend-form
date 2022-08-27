@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 const data = [
 	{
@@ -108,16 +108,11 @@ const EditableTable = () => {
 				</tbody>
 			</table>
 			<div>
-				<button className="add_button"
-					floated='left'
-					onClick={(e) => AddContact(e)}
-					icon
-					labelPosition='left'
-					primary
-					size='small'>
+				<Button floated='left' labelPosition='left' animated='fade' icon onClick={(e) => AddContact(e)}>
 					<Icon name='user' />
-					Add new
-				</button>
+					<Button.Content visible>Add contact</Button.Content>
+					<Button.Content hidden>New contact</Button.Content>
+				</Button>
 			</div>
 		</div >
 	)
